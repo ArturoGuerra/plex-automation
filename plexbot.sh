@@ -38,5 +38,5 @@ else
 fi
 
 
-/usr/bin/filebot -script dev:amc --output $DEST_DIR --action copy -non-strict $SOURCE_DIR --conflict auto --log-file $amclog --def subtitles=en,es --def excludeList=$amc --def clean=y --def unsorted=y --def extras=y --def seriesFormat="/home/plex/TV Shows/{n.replaceAll(/'/)}/Season {s.pad(2)}/{n} - {s00e00} - {t}" --def animeFormat="/home/plex/Anime/{n.replaceAll(/'/)}/Season {s.pad(2)}/{n} - {s00e00} - {t}" --def exec="$CALLBACK"
+/usr/bin/filebot -script dev:amc --output $DEST_DIR --action copy -non-strict $SOURCE_DIR --conflict auto --log-file $amclog --def subtitles=en,es --def excludeList=$amc --def clean=y --def unsorted=y --def extras=y --def seriesFormat="/home/plex/TV Shows/{n.replaceAll(/'/)}/Season {s.pad(2)}/{n} - {s00e00} - {t}" --def music=y --def animeFormat="/home/plex/Anime/{n.replaceAll(/'/)}/Season {s.pad(2)}/{n} - {s00e00} - {t}" --def exec="$CALLBACK"
 exit 0
