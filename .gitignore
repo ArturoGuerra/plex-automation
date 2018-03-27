@@ -1,0 +1,6 @@
+*.txt
+node_modules/
+__pycache__/
+*.pyc
+plexbot.conf
+transmission.json
