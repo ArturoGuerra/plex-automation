@@ -22,9 +22,7 @@ def filebot(args, download_dir, delete=True):
     if code is 0:
         if delete:
             clean(download_dir)
-        print("Finished :)")
         return True
 
     else:
-        print("Error :(")
         return False
