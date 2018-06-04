@@ -1,9 +1,9 @@
-import os
-import sys
+from os import path
+from sys import argv
 
 class Config:
     def __init__(self):
-        script_path = os.path.dirname(os.path.realpath(sys.argv[0]))
+        script_path = path.dirname(path.realpath(argv[0]))
         rawconfig = open(script_path + '/plexbot.conf', 'r').read()
         vals = rawconfig.split('\n')
         for val in vals:
