@@ -1,8 +1,27 @@
+import logging
+
 from os import system
 from shutil import rmtree
 from config import config
 
 scripts = config.scripts
+FORMAT = '%(asctime)s:%(name)s:%(module)s:%(levelname)s: %(message)s'
+
+def get_logger(name):
+    loggging.basicConfig(level.logging.INFO, format=FORMAT)
+    logger = logging.getLogger(name)
+
+    try:
+        handler = logging.handlers.SysLogHandler(address=(config.syslogaddr, config.syslogport))
+        logger.addHandler(handler)
+    except Exception:
+        try:
+            handler = logging.handlers.SysLogHandler(address='/dev/log')
+            logger.addHandler(handler)
+        except Exception:
+            pass
+
+    return logger
 
 def categories(key):
     cats = {

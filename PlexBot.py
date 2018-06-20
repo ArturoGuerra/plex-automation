@@ -13,9 +13,11 @@
 
 from os import environ
 from sys import exit
-from utils import categories, filebot
+from utils import categories, filebot, get_logger
 
-print("Running PlexBot")
+logger = get_logger(__name__)
+
+logger.info("Running PlexBot")
 
 mode = ' --nzbget'
 status = environ.get("NZBPP_TOTALSTATUS")
@@ -29,14 +31,14 @@ args = cat + mode
 
 def check():
     if status == "SUCCESS":
-        print("Downloaded :)")
+        logger.info("Downloaded :)")
         if filebot(args, download_dir):
             exit(POST_SUCCESS)
         else:
             exit(POST_ERROR)
 
     elif status == "FAILURE":
-        print("Download Failed")
+        logger.info("Download Failed")
         exit(POST_ERROR)
 
     else:
