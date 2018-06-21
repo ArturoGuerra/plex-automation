@@ -3,22 +3,25 @@ import logging
 from os import system
 from shutil import rmtree
 from config import config
+from logging.handlers import SysLogHandler
 
 scripts = config.scripts
 FORMAT = '%(asctime)s:%(name)s:%(module)s:%(levelname)s: %(message)s'
 
 def get_logger(name):
-    loggging.basicConfig(level.logging.INFO, format=FORMAT)
+    logging.basicConfig(level=logging.INFO, format=FORMAT)
     logger = logging.getLogger(name)
 
     try:
-        handler = logging.handlers.SysLogHandler(address=(config.syslogaddr, config.syslogport))
+        addr = config.syslogaddr.strip('"')
+        port = int(config.syslogport.strip('"'))
+        handler = SysLogHandler(address=(addr, port))
         logger.addHandler(handler)
-    except Exception:
+    except Exception as e:
         try:
-            handler = logging.handlers.SysLogHandler(address='/dev/log')
+            handler = SysLogHandler()
             logger.addHandler(handler)
-        except Exception:
+        except Exception as e:
             pass
 
     return logger
