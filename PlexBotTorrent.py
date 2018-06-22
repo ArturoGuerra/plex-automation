@@ -5,7 +5,7 @@ from utils import filebot, categories, get_logger
 from config import config
 from cleaner import clean
 
-logger = get_logger(__name__)
+logger = get_logger('PlexBotDeluge')
 logger.info("Starting PlexBotTorrent...")
 base = config.torrents.strip('"')
 torrent_id = argv[1]

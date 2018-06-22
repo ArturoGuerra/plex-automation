@@ -15,7 +15,7 @@ from os import environ
 from sys import exit
 from utils import categories, filebot, get_logger
 
-logger = get_logger(__name__)
+logger = get_logger('PlexBotNZB')
 
 logger.info("Running PlexBot")
 

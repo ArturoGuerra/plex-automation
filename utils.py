@@ -9,6 +9,7 @@ scripts = config.scripts
 FORMAT = '%(asctime)s:%(name)s:%(module)s:%(levelname)s: %(message)s'
 
 def get_logger(name):
+    formatter = logging.Formatter('{} {}'.format(name, FORMAT))
     logging.basicConfig(level=logging.INFO, format=FORMAT)
     logger = logging.getLogger(name)
 
@@ -16,10 +17,12 @@ def get_logger(name):
         addr = config.syslogaddr.strip('"')
         port = int(config.syslogport.strip('"'))
         handler = SysLogHandler(address=(addr, port))
+        handler.formatter = formatter
         logger.addHandler(handler)
     except Exception as e:
         try:
             handler = SysLogHandler()
+            handler.formatter = formatter
             logger.addHandler(handler)
         except Exception as e:
             pass
